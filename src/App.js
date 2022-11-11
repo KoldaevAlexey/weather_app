@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import Header from "./Components/Header/Header";
+import Home from "./pages/Home";
+import {
+    Route,
+    Routes
+} from "react-router-dom";
+import NewsFull from "./pages/NewsFull";
+import WeatherFull from "./pages/WeatherFull";
+import NotFound from "./pages/NotFound";
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+        <Header />
+        <div className={'content'}>
+            <Routes>
+                <Route path={'/'} element={<Home/>}/>
+                <Route path={'/weather'} element={<WeatherFull/>}/>
+                <Route path={'/news'} element={<NewsFull/>}/>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </div>
+
     </div>
   );
 }
