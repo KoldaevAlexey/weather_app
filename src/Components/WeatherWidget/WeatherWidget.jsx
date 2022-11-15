@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './WeatherWidget.module.css'
+import {Link} from "react-router-dom";
 
 const WeatherWidget = ({data}) => {
-
     let localTime = data.location.localtime;
 
     return (
@@ -12,6 +12,10 @@ const WeatherWidget = ({data}) => {
                     <p>Current day</p>
                     <p>{data.location.name}</p>
                     <p>{localTime.slice(10, localTime.length)}</p>
+                    <Link to={'/weather'}>
+                        <p> Подробнее... </p>
+                    </Link>
+
                 </div>
                 <div className={styles.weather_temp}>
                     <img src={data.current.condition.icon} alt="day" width={100} height={100}/>

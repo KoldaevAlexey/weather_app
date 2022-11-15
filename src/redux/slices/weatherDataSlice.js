@@ -1,36 +1,30 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { userAPI } from './userAPI'
 import axios from 'axios';
 
-// First, create the thunk
-const fetchWeatherData = createAsyncThunk(
-    'users/fetchByIdStatus',
-    async (userId, thunkAPI) => {
-        const response = await userAPI.fetchById(userId)
-        return response.data
+const initialState = {
+    weatherData: null,
+}
+
+export const fetchWeatherData = createAsyncThunk(
+    'weatherData/fetchWeatherData',
+    async (city,{rejectWithValue}) => {
+        const { data } = await axios.get(`http://api.weatherapi.com/v1/current.json?key=5fb8d8d2b511466a816171917221011&q=${city ?? 'Moscow'}&aqi=no&lang=ru`);
+        return data;
     }
 )
 
-const initialState = {
-    entities: [],
-    loading: 'idle',
-}
-
-// Then, handle actions in your reducers:
-const usersSlice = createSlice({
-    name: 'users',
+export const weatherDataSlice = createSlice({
+    name: 'weatherData',
     initialState,
-    reducers: {
-        // standard reducer logic, with auto-generated action types per reducer
-    },
+    reducers: {},
+    status: null,
+    error: null,
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(fetchUserById.fulfilled, (state, action) => {
-            // Add user to the state array
-            state.entities.push(action.payload)
-        })
-    },
+        builder.addCase(fetchWeatherData.fulfilled, (state, action) => {
+           state.weatherData = action.payload;
+            })
+        },
+
 })
 
-// Later, dispatch the thunk as needed in the app
-dispatch(fetchUserById(123))
+export default weatherDataSlice.reducer;

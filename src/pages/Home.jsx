@@ -1,31 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import WeatherWidget from "../Components/WeatherWidget/WeatherWidget";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import { fetchWeatherData } from '../redux/slices/weatherDataSlice'
 
 const Home = () => {
-
-    const [data, setData] = React.useState({})
+    const dispatch = useDispatch()
+    const data = useSelector((state) => state.weatherData.weatherData);
 
 
     React.useEffect(() => {
-        try {
-            const getData = async () => {
-                const { data } = await axios.get("http://api.weatherapi.com/v1/current.json?key=5fb8d8d2b511466a816171917221011&q=Madrid&aqi=no&lang=ru");
-                setData(data)
-            }
-            getData()
-            console.log(data)
-        }
-        catch (e) {
-            console.log(e.message)
-        }
-
-
+        dispatch(fetchWeatherData())
     }, [])
 
     return (
         <div>
-            <WeatherWidget data={data}/>
+             {data && <WeatherWidget data={data}/>}
         </div>
     );
 };
