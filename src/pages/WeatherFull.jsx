@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DetailedWeatherWidget from "../Components/DetailedWeatherWidget/DetailedWeatherWidget";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchDetailedWeatherData} from "../redux/slices/detailedWeatherDataSlice";
@@ -7,13 +7,14 @@ import {Link} from "react-router-dom";
 const WeatherFull = () => {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.detailedWeatherData.detailedWeatherData)
+    const city = useSelector((state) => state.weatherCity.city)
 
     React.useEffect(() => {
-        dispatch(fetchDetailedWeatherData())
+        dispatch(fetchDetailedWeatherData(city))
     }, [])
 
     return (
-        <div>
+        <div style={{width: '100vw'}}>
             <h1 style={{display:'flex', justifyContent: 'center', marginTop: 20}} >
                 {data && data.location.name} погода на три дня
             </h1>

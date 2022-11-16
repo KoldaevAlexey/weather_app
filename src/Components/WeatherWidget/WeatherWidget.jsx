@@ -9,9 +9,9 @@ const WeatherWidget = ({data}) => {
         <div className={styles.container}>
             <div className={styles.basic_info}>
                 <div className={styles.city_info}>
-                    <p>Current day</p>
-                    <p>{data.location.name}</p>
-                    <p>{localTime.slice(10, localTime.length)}</p>
+                    <p>Погода на сегодня</p>
+                    <p>г. {data.location.name}</p>
+                    <p>Время: {localTime.slice(10, localTime.length)}</p>
                     <Link to={'/weather'}>
                         <p> Подробнее... </p>
                     </Link>
@@ -27,11 +27,11 @@ const WeatherWidget = ({data}) => {
             </div>
             <div className={styles.additional_info}>
                 <div className={styles.additional_info_items}>
-                    <p>Wind</p>
+                    <p>Ветер:</p>
                     <p>{data.current.wind_kph} km/h</p>
                 </div>
                 <div className={styles.additional_info_items}>
-                    <p>Сloudiness</p>
+                    <p>Облачность:</p>
                     <p>
                         {data.current.cloud}%
                     </p>
