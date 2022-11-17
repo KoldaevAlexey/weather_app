@@ -20,7 +20,7 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<Home/>}/>
                 <Route path={'/weather'} element={<WeatherFull/>}/>
-                <Route path={'/news'} element={<NewsFull/>}/>
+                <Route path={'/news/:index'} element={<NewsFull/>}/>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>

@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchWeatherData} from "../../redux/slices/weatherDataSlice";
 import {setCity} from "../../redux/slices/weatherCitySlice";
 import {useLocation} from "react-router";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const [value, setValue] = useState('');
@@ -18,13 +19,15 @@ const Header = () => {
     }
 
 
+
+
     return (
         <div className={styles.container}>
-            <div className={styles.logo}>
-                <img src={logo} alt="logo" width={40}/>
-                <p>Weather_App</p>
-            </div>
-            {location.pathname !== '/weather'
+                <Link to={"/"} className={styles.logo}>
+                    <img src={logo} alt="logo" width={40}/>
+                    <p>Weather_App</p>
+                </Link>
+            {location.pathname === '/'
                 &&
                     <div className={styles.input_wrapper}>
                     <input

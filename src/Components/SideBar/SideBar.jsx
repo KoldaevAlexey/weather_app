@@ -14,8 +14,8 @@ const SideBar = () => {
 
     return (
         <div className={styles.root}>
-            {news && news.articles.map((item) => (
-                <NewsItem key={item.title} news={item}/>
+            {news && news.articles.map((item, idx) => (
+                <NewsItem key={item.title} idx={idx} news={item}/>
             ))}
         </div>
     );

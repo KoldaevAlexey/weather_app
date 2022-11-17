@@ -2,16 +2,19 @@
     display: flex;
     padding: 10px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     background-color: #1F1F1F;
     color: #FEFCFB;
 }
 
 .logo {
+    text-decoration: none;
     display: flex;
+    align-items: center;
     justify-content: flex-start;
     width: 30%;
+    color: #FEFCFB;
 }
 
 .logo p {

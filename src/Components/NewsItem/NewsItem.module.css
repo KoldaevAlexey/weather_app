@@ -1,28 +1,34 @@
 .root {
-    border: 1px solid black;
     border-radius: 10px;
     padding: 1vh;
     display: flex;
     cursor:pointer;
-    transition: .5s all;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1vw;
     height: 16vmin;
-    width: 100%;
+    width: 37%;
+    text-decoration: none;
+    transition: .3s all;
 }
 
 .root img {
     border-radius: 8px;
-    width: 20vh;
+    width: 30vh;
 }
 
 .root:hover {
     background-color: #1F1F1F;
     color: #EBEBEB;
+    width: 100%;
 }
 
 .info {
-    margin-left: 10px;
     display: flex;
+    margin-left: 10px;
+    color: #EBEBEB;
+}
+
+.info:hover {
+    margin-left: 10px;
 }
 

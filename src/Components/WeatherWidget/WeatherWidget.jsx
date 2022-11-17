@@ -6,20 +6,16 @@ const WeatherWidget = ({data}) => {
     let localTime = data.location.localtime;
 
     return (
-        <div className={styles.container}>
+        <Link to={'/weather'} className={styles.container}>
             <div className={styles.basic_info}>
                 <div className={styles.city_info}>
                     <p>Погода на сегодня</p>
                     <p>г. {data.location.name}</p>
                     <p>Время: {localTime.slice(10, localTime.length)}</p>
-                    <Link to={'/weather'}>
-                        <p> Подробнее... </p>
-                    </Link>
-
                 </div>
-                <div className={styles.weather_temp}>
-                    <img src={data.current.condition.icon} alt="day" width={100} height={100}/>
-                    <div >
+                <div className={styles.temp}>
+                    <img src={data.current.condition.icon} alt="day"/>
+                    <div>
                         <p>{data.current.temp_c}</p>
                         <h3>{data.current.condition.text}</h3>
                     </div>
@@ -43,7 +39,7 @@ const WeatherWidget = ({data}) => {
                     </p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
