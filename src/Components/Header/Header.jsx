@@ -13,19 +13,28 @@ const Header = () => {
     const location = useLocation();
 
     const fetchWeatherDataHandler = (city) => {
-        dispatch(setCity(city))
-        dispatch(fetchWeatherData(city));
-        setValue('');
+        try {
+            dispatch(setCity(city))
+            dispatch(fetchWeatherData(city));
+            setValue('');
+        }
+        catch (e) {
+            console.log(e.message)
+        }
+
     }
 
-
-
+    const handlerKeyPress = (e, value) => {
+        if (e.key === 'Enter') {
+            fetchWeatherDataHandler(value);
+        }
+    }
 
     return (
         <div className={styles.container}>
                 <Link to={"/"} className={styles.logo}>
-                    <img src={logo} alt="logo" width={40}/>
-                    <p>Weather_App</p>
+                        <img src={logo} alt="logo" width={"17%"}/>
+                        <p>Weather_App</p>
                 </Link>
             {location.pathname === '/'
                 &&
@@ -35,6 +44,7 @@ const Header = () => {
                         placeholder={'введите название города'}
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
+                        onKeyPress={(e) => handlerKeyPress(e, value)}
                     />
                     <button
                         className={styles.btn_input}

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import WeatherWidget from "../Components/WeatherWidget/WeatherWidget";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import { fetchWeatherData } from '../redux/slices/weatherDataSlice'
 import SideBar from "../Components/SideBar/SideBar";
@@ -12,7 +11,13 @@ const Home = () => {
 
 
     React.useEffect(() => {
-        dispatch(fetchWeatherData(city))
+        try {
+            dispatch(fetchWeatherData(city));
+        }
+        catch (e) {
+            console.log(e.message);
+        }
+
     }, [])
 
     return (

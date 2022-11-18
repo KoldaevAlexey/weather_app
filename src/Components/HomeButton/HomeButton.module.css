@@ -1,0 +1,20 @@
+.root {
+    text-decoration: none;
+    color: white;
+    padding: 2vh 3vh;
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #0d0d0e 0%, #68686c 51%, #838388 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+    font-size: 80%;
+    width: 25vh;
+    height: 7vh;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.root:hover {
+    background-position: right center;
+}

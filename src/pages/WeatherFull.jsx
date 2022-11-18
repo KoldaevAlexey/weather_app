@@ -3,6 +3,7 @@ import DetailedWeatherWidget from "../Components/DetailedWeatherWidget/DetailedW
 import {useDispatch, useSelector} from "react-redux";
 import {fetchDetailedWeatherData} from "../redux/slices/detailedWeatherDataSlice";
 import {Link} from "react-router-dom";
+import HomeButton from "../Components/HomeButton/HomeButton";
 
 const WeatherFull = () => {
     const dispatch = useDispatch();
@@ -10,12 +11,18 @@ const WeatherFull = () => {
     const city = useSelector((state) => state.weatherCity.city)
 
     React.useEffect(() => {
-        dispatch(fetchDetailedWeatherData(city))
+        try {
+            dispatch(fetchDetailedWeatherData(city));
+        }
+        catch (e) {
+            console.log(e.message);
+        }
+
     }, [])
 
     return (
         <div style={{width: '100vw'}}>
-            <h1 style={{display:'flex', justifyContent: 'center', marginTop: 20}} >
+            <h1 style={{display:'flex', justifyContent: 'center', marginTop:'3vw', fontSize:"5vh"}} >
                 {data && data.location.name} погода на три дня
             </h1>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
@@ -23,11 +30,10 @@ const WeatherFull = () => {
                     <DetailedWeatherWidget key={item.date_epoch} data={item}/>
                 ))}
             </div>
-            <Link to={'/'} >
-                <button className={'gradient-btn'}>
-                    На главную
-                </button>
-            </Link>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <HomeButton />
+            </div>
+
         </div>
     );
 };

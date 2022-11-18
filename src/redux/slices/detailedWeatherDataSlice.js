@@ -1,10 +1,11 @@
 import {createAsyncThunk, createSlice, isRejectedWithValue} from '@reduxjs/toolkit';
 import axios from 'axios';
+import {API_KEY_WEATHER} from "../../utils/consts";
 
 export const fetchDetailedWeatherData = createAsyncThunk(
     'users/fetchByIdStatus',
     async (city, {rejectWithValue}) => {
-        const { data } = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=5fb8d8d2b511466a816171917221011&q=${city}&days=3&aqi=no&alerts=no&lang=ru`);
+        const { data } = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY_WEATHER}&q=${city}&days=3&aqi=no&alerts=no&lang=ru`);
         return data;
     }
 )

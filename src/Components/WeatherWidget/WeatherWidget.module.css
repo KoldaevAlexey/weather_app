@@ -25,6 +25,10 @@
     font-size: 3vh;
 }
 
+.basic_info h2 {
+    margin: 3vh 0 0 3vh;
+}
+
 .city_info {
     font-weight: 400;
     margin-left: 3vh;

@@ -5,11 +5,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchNewsData} from "../../redux/slices/newsDataSlice";
 
 const SideBar = () => {
-    const dispatch = useDispatch()
-    const news = useSelector((state) => state.newsData.news)
+    const dispatch = useDispatch();
+    const news = useSelector((state) => state.newsData.news);
 
     useEffect( () => {
-        dispatch(fetchNewsData())
+        try {
+            dispatch(fetchNewsData());
+        } catch (e) {
+            console.log(e.message);
+        }
+
     }, [])
 
     return (

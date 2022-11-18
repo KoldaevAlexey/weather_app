@@ -19,7 +19,7 @@ function App() {
         <div className={'content'}>
             <Routes>
                 <Route path={'/'} element={<Home/>}/>
-                <Route path={'/weather'} element={<WeatherFull/>}/>
+                <Route path={'/detailedWeather'} element={<WeatherFull/>}/>
                 <Route path={'/news/:index'} element={<NewsFull/>}/>
                 <Route path="*" element={<NotFound />} />
             </Routes>
